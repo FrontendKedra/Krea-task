@@ -647,14 +647,14 @@ let lastSubArray;
 
 for (const number of inputNumbers) {
   for (const subArray of splitArrays) {
-    for (const obj of subArray) {
+    for (const object of subArray) {
       if (
-        obj.number === number &&
+        object.number === number &&
         !markedIndexesCombinations.some((array) =>
           array.every((field) => subArray[field].marked === true)
         )
       ) {
-        obj.marked = true;
+        object.marked = true;
         lastMarkedNumber = number;
         lastSubArray = subArray;
       }
