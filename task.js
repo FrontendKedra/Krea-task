@@ -667,3 +667,33 @@ const filteredLastArraySum = lastSubArray
   .reduce((accumulator, currentValue) => accumulator + currentValue.number, 0);
 
 const finalSum = filteredLastArraySum * lastMarkedNumber;
+
+
+const postData = async () => {
+    const url = "https://customer-api.krea.se/coding-tests/api/squid-game";
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "answer": finalSum,
+          "name": "Szymon Kędra"
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+  
+      const responseData = await response.json();
+      console.log(responseData);
+  
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+    }
+  };
+  
+  postData();
